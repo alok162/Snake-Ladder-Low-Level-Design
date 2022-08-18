@@ -154,6 +154,9 @@ public class GameService {
                 move(player, diceOutcome);
                 qPlayers.add(player);
             }
+
+            if (qPlayers.size() == 0)
+                stop();
         }
     }
 
