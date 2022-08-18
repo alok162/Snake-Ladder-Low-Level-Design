@@ -84,39 +84,39 @@ public class Player {
 
 public class Board {
     private int size;
-    List<Snake> snakes;
-    List<Ladder> ladders;
+    Map<Integer, Snake> snakes;
+    Map<Integer, Ladder> ladders;
     Map<String, Player> boardPlayer;
 
     public void Board(int size) {
         this.size = size;
-        snakes = new ArrayList<>();
-        ladders = new ArrayList<>();
+        snakes = new HashMap<>();
+        ladders = new HashMap<>();
         boardPlayer = new HashMap<>();
     }
 
-    public void setSnake(List<Snake> snakes) {
+    public void setSnake(Map<Integer, Snake> snakes) {
         this.snakes = snakes;
     }
 
-    public void setLadder(List<Ladder> ladders) {
+    public void setLadder(Map<Integer, Ladder> ladders) {
         this.ladders = ladders;
     }
 
-    public void setBoardPlayer(Map<String, Integer> playerPeices) {
+    public void setBoardPlayer(Map<String, Player> playerPeices) {
         this.boardPlayer = boardPlayer;
     }
 
-    public List<Ladder> getLadders() {
+    public Map<Integer, Ladder> getLadders() {
         return this.ladders;
     }
 
-    public List<Snake> getSnakes() {
+    public Map<Integer, Snake> getSnakes() {
         return this.snakes;
     }
 
-    public Map<String, Integer> getBoardPlayer() {
-        return this.playerPeices;
+    public Map<String, Player> getBoardPlayer() {
+        return this.boardPlayer;
     }
 }
 
@@ -176,11 +176,19 @@ public class GameService {
     }
     
     public void setLadder(List<Ladder> ladders) {
-        this.board.setLadder(ladders);
+        Map<Integer, Ladder> boardLadders = new HashMap<>();
+        for (Ladder ladder : ladders) {
+            boardLadders.put(ladder.getStart(), ladder);
+        }
+        this.board.setLadder(boardLadders);
     }
 
     public void setSnake(List<Snake> snakes) {
-        this.board.setSnake(snakes);
+        Map<Integer, Snake> boardSnakes = new HashMap<>():
+        for (Snake snake : snakes) {
+            boardSnakes.put(snake.getStart(), snake);
+        }
+        this.board.setSnake(boardSnakes);
     }
 
     public void setBoardPlayer() {
