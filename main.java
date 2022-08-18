@@ -39,7 +39,22 @@ public class Ladder {
 }
 
 public class Peice {
+    
     private String color;
+    private int position;
+    
+    public void Peice(String color) {
+        this.color = color;
+        this.position = 0;
+    }
+    
+    public int getPosition() {
+        return this.position;
+    }
+    
+    public void setPosition(int position) {
+        this.position = position;
+    }
 }
 
 public class Player {
@@ -59,13 +74,13 @@ public class Board {
     private int size;
     List<Snake> snakes;
     List<Ladder> ladders;
-    List<Peice> peices;
+    Map<String, Player> boardPlayer;
 
     public void Board(int size) {
         this.size = size;
         snakes = new ArrayList<>();
         ladders = new ArrayList<>();
-        peices = new ArrayList<>();
+        boardPlayer = new HashMap<>();
     }
 
     public void setSnake(List<Snake> snakes) {
@@ -76,8 +91,8 @@ public class Board {
         this.ladders = ladders;
     }
 
-    public void setPeices(List<Peice> peices) {
-        this.peices = peices;
+    public void setBoardPlayer(Map<String, Integer> playerPeices) {
+        this.boardPlayer = boardPlayer;
     }
 
     public List<Ladder> getLadders() {
@@ -88,8 +103,8 @@ public class Board {
         return this.snakes;
     }
 
-    public List<Peice> getPeices() {
-        return this.peices;
+    public Map<String, Integer> getBoardPlayer() {
+        return this.playerPeices;
     }
 }
 
@@ -106,6 +121,7 @@ public class GameService {
 
     public void GameService(Queue<Player> players) {
         this.players = new LinkedList<>();
+        
     }
 
     public void start() {
@@ -121,6 +137,13 @@ public class GameService {
     public void stop() {
         this.isGameOver = true;
     }
+    
+    public void setLadder() {
+        
+}
+
+public class Controller {
+       
 }
 
 
